@@ -1,0 +1,4 @@
+.DS_*
+
+node_modules
+test
