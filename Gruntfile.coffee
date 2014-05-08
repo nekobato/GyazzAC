@@ -8,7 +8,7 @@ module.exports = (grunt) ->
         sourceMap: no
       compile:
         files: {
-          'gyazze.js': 'src/gyazze.coffee'
+          'gyazzac.js': 'src/gyazzac.coffee'
         }
 
     uglify:
@@ -17,7 +17,7 @@ module.exports = (grunt) ->
         banner: 'javascript: '
       compile:
         files: {
-          'gyazze.min.js': 'gyazze.js',
+          'gyazzac.min.js': 'gyazzac.js',
           'bookmarklet.min.js': 'src/bookmarklet.js',
         }
 
@@ -28,7 +28,7 @@ module.exports = (grunt) ->
         trace: true
       dist:
         files: {
-          'gyazze.min.css': 'src/gyazze.sass'
+          'gyazzac.min.css': 'src/gyazzac.sass'
         }
 
     watch:
