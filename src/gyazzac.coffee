@@ -1,6 +1,6 @@
 # Config
 BASE_URL = "http://localhost:8888/"
-CSS_URL = "gyazze.min.css"
+CSS_URL = "gyazzac.min.css"
 
 # unbind all Gyazz event
 $("*").unbind();
