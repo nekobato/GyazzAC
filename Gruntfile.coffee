@@ -8,7 +8,7 @@ module.exports = (grunt) ->
         sourceMap: no
       compile:
         files: {
-          'egyazz.js': 'src/egyazz.coffee'
+          'gyazze.js': 'src/gyazze.coffee'
         }
 
     uglify:
@@ -17,18 +17,18 @@ module.exports = (grunt) ->
         banner: 'javascript: '
       compile:
         files: {
-          'egyazz.min.js': 'egyazz.js',
+          'gyazze.min.js': 'gyazze.js',
           'bookmarklet.min.js': 'src/bookmarklet.js',
         }
 
     sass:
       options:
-        style: 'compressed'
+        style: 'expand'
         noCache: true
         trace: true
       dist:
         files: {
-          'egyazz.min.css': 'src/egyazz.sass'
+          'gyazze.min.css': 'src/gyazze.sass'
         }
 
     watch:
@@ -38,9 +38,6 @@ module.exports = (grunt) ->
       coffee:
         files: ['src/*.coffee']
         tasks: ['coffee']
-      uglify: 
-        files: ['./egyazz.js', 'src/bookmarklet.js']
-        tasks: ['uglify']
       sass:
         files: ['src/*.sass']
         tasks: ['sass']
