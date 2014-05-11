@@ -6,21 +6,26 @@ module.exports = (grunt) ->
     coffee:
       options:
         sourceMap: no
-      compile:
-        files: {
-          'gyazzac.js': 'src/gyazzac.coffee',
-          'bookmarklet.js': 'src/bookmarklet.coffee',
-        }
+      dist:
+        files:
+          'gyazzac.js': 'src/gyazzac.coffee'
+      bookmarklet:
+        options:
+          bare: false
+        files:
+          'bookmarklet.js': 'src/bookmarklet.coffee'
 
     uglify:
       options:
         compress: true
-        banner: 'javascript: '
-      compile:
-        files: {
-          'gyazzac.min.js': 'gyazzac.js',
-          'bookmarklet.min.js': 'bookmarklet.js',
-        }
+      dist:
+        files:
+          'gyazzac.min.js': 'gyazzac.js'
+      bookmarklet:
+        options:
+          banner: 'javascript: !'
+        files:
+          'bookmarklet.min.js': 'bookmarklet.js'
 
     sass:
       options:
@@ -28,9 +33,8 @@ module.exports = (grunt) ->
         noCache: true
         trace: true
       dist:
-        files: {
-          'gazzac.min.css': 'src/gyazzac.sass'
-        }
+        files:
+          'gyazzac.min.css': 'src/gyazzac.sass'
 
     watch:
       options:
@@ -38,7 +42,7 @@ module.exports = (grunt) ->
           grunt.log.writeln "The watch finished in #{time}ms at #{new Date().toLocaleTimeString()}"
       coffee:
         files: ['src/*.coffee']
-        tasks: ['coffee']
+        tasks: ['coffee:dist']
       sass:
         files: ['src/*.sass']
         tasks: ['sass']
