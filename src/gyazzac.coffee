@@ -44,6 +44,14 @@ class DefaultC
     _e.hide() for _e in _current
     _e.show() for _e in _goto
 
+    _backGround = null
+    _goto[0].find("a").each () ->
+      _backGround = $(this).attr('href') if $(this).text() is "bg"
+    if _backGround
+      $('body').css("background-image", "url(#{_backGround})")
+    else
+      $('body').attr("style", "")
+
     $("#seek-bar").animate {"width": _barWidth}, 100
 
 
@@ -101,7 +109,8 @@ $('#contents > div').attr("style", "display:none")
 # Config
 
 unless theme?
-  BASE_URL = "http://gyazzac.nekobato.net/"
+  #BASE_URL = "http://gyazzac.nekobato.net/"
+  BASE_URL = "http://localhost:8888/"
   CSS_URL = "gyazzac.min.css"
   C = new DefaultC
   GyazzAC = new GyazzA(C)
