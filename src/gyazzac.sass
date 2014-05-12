@@ -41,6 +41,7 @@ body
     text-decoration: none
 
 #contents
+  margin: 0 0 2em 0
   div.listedit0:before
     content: none
   .listedit0
@@ -72,9 +73,15 @@ body
   width: 100%
   height: 34px
   background: rgba(90, 90, 90, 0.8)
+  opacity: 0
   #seek
     height: 6px
     background: #CCCCCC
+    #seek-bar
+      background: #FF9966
+      width: 0
+      height: 100%
+
   #prev-btn, #next-btn, #index-btn
     margin: 0 1px
     padding: 0 10px
@@ -84,9 +91,11 @@ body
     cursor: pointer
   #index-btn
     float: right
+.ctrlbar:hover
+  opacity: 1
 #indexes
   position: fixed
-  top: 0
+  top: 10px
   left: 0
   bottom: 34px
   display: none
@@ -104,5 +113,7 @@ body
     cursor: pointer
   li:hover
     background: #888888
+  li.active
+    background: #666666
 
 /* bottom of doc */
