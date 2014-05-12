@@ -46,7 +46,9 @@ class DefaultC
 
     _backGround = null
     _goto[0].find("a").each () ->
-      _backGround = $(this).attr('href') if $(this).text() is "bg"
+      if $(this).text() is "bg"
+        _backGround = $(this).attr('href')
+        $(this).hide()
     if _backGround
       $('body').css("background-image", "url(#{_backGround})")
     else
