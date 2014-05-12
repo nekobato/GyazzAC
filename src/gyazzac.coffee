@@ -9,15 +9,20 @@ class DefaultC
     # Set Seekbar
     $('body').append(
       "<div class='ctrlbar'>" +
-        "<div id='seek'><div class='seek-bar'></div></div>" +
+        "<div id='seek'><div id='seek-bar'></div></div>" +
         "<span id='index-btn'>〓</span>" +
         "<span id='prev-btn'>◀</span>" +
         "<span id='next-btn'>▶</span>" +
       "</div>")
 
     # Seekbar events
-    $("#prev-btn").bind "click", $(document).trigger 'keydown', ['prev']
-    $("#next-btn").bind "click", $(document).trigger 'keydown', ['next']
+    $("#prev-btn").bind "click", () ->
+      $(document).trigger 'keydown', ['prev']
+    $("#next-btn").bind "click", () ->
+      $(document).trigger 'keydown', ['next']
+    $("#seek").bind "click", (e) ->
+      number = Math.round( $(".listedit0").length * e.offsetX / $("#seek").width() )
+      GyazzAC.jump number
 
     # Set index
     _topTitle = $("#title").text()
@@ -34,17 +39,14 @@ class DefaultC
       GyazzAC.jump $(this).data("number")
       
     
-  prevAction: (_current, _prev)->
+  pagingAction: (_number, _current, _goto)->
+    _barWidth = Math.round( $("#seek").width() / $(".listedit0").length * _number )
     _e.hide() for _e in _current
-    _e.show() for _e in _prev
+    _e.show() for _e in _goto
 
-  nextAction: (_current, _next) ->
-    _e.hide() for _e in _current
-    _e.show() for _e in _next
+    $("#seek-bar").animate {"width": _barWidth}, 100
 
-  jumpAction: (_current, _jump) ->
-    _e.hide() for _e in _current
-    _e.show() for _e in _jump
+
 
 
 class GyazzA
@@ -61,32 +63,27 @@ class GyazzA
   _number = 0
   _pages = [[$(".title")]]
 
-  constructor: (@theme) ->
+  constructor: (@C) ->
+    console.log "page constructor"
     $(".listedit0").each () ->
       _pages.push _pageInitializer $(this)
-    console.log _pages
-
-    console.log "page constructor"
-    @theme.applyTheme()
+    @C.applyTheme()
 
   prev: () ->
     console.log "prev"
     if _number > 0
-      @theme.prevAction _pages[_number], _pages[_number-1]
+      @C.pagingAction _number-1, _pages[_number], _pages[_number-1]
       _number--
 
   next: () ->
     console.log "next"
     if _number < _pages.length-1
-      @theme.nextAction _pages[_number], _pages[_number+1]
+      @C.pagingAction _number+1, _pages[_number], _pages[_number+1]
       _number++
 
   jump: (_goto) ->
-    console.log "jump to #{_number}"
-
-    console.log _pages[_number]
-    console.log _pages[_number]
-    @theme.jumpAction _pages[_number], _pages[_goto]
+    console.log "jump to #{_goto}"
+    @C.pagingAction _goto, _pages[_number], _pages[_goto]
     _number = _goto
 
 
