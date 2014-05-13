@@ -106,6 +106,8 @@ $(document).unbind()
 clearTimeout reloadTimeout
 # 用があるまでコンテンツには消えてもらいたい
 $('#contents > div').attr("style", "display:none")
+# 戻るボタンで元のGyazzページへ戻る
+window.onbeforeunload = () -> location.reload true
 
 
 # Config
@@ -125,10 +127,10 @@ $('head').append("<link rel='stylesheet' href='#{BASE_URL}#{CSS_URL}' type='text
 # Basic events
 
 $(document).on 'keydown', (e, order) ->
-  if e.which is (8 or 37) or order is 'prev' # Backspace, Left
+  if e.which is 8 or e.which is 37 or order is 'prev' # Backspace, Left
     event.preventDefault()
     GyazzAC.prev()
 
-  else if e.which is (13 or 39) or order is 'next' # Enter or Right
+  else if e.which is 13 or e.which is 39 or order is 'next' # Enter, Right
     event.preventDefault()
     GyazzAC.next()
