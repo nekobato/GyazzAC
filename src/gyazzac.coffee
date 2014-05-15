@@ -5,7 +5,7 @@ class DefaultC
   indexes: []
 
   applyTheme: () ->
-    
+
     # Set Seekbar
     $('body').append(
       "<div class='ctrlbar'>" +
@@ -21,7 +21,8 @@ class DefaultC
     $("#next-btn").bind "click", () ->
       $(document).trigger 'keydown', ['next']
     $("#seek").bind "click", (e) ->
-      number = Math.round( $(".listedit0").length * e.offsetX / $("#seek").width() )
+      number = Math.round(
+        $(".listedit0").length * e.offsetX / $("#seek").width() )
       GyazzAC.jump number
 
     # Set index
@@ -37,10 +38,11 @@ class DefaultC
       $("#indexes").toggle()
     $("#indexes li").bind "click", () ->
       GyazzAC.jump $(this).data("number")
-      
-    
+
+
   pagingAction: (_number, _current, _goto)->
-    _barWidth = Math.round( $("#seek").width() / $(".listedit0").length * _number )
+    _barWidth = Math.round(
+      $("#seek").width() / $(".listedit0").length * _number )
     _e.hide() for _e in _current
     _e.show() for _e in _goto
 
@@ -120,7 +122,8 @@ unless theme?
   GyazzAC = new GyazzA(C)
 
 # append GyazzA(C) style
-$('head').append("<link rel='stylesheet' href='#{BASE_URL}#{CSS_URL}' type='text/css' />")
+$('head').append(
+  "<link rel='stylesheet' href='#{BASE_URL}#{CSS_URL}' type='text/css' />")
 
 
 
@@ -128,9 +131,9 @@ $('head').append("<link rel='stylesheet' href='#{BASE_URL}#{CSS_URL}' type='text
 
 $(document).on 'keydown', (e, order) ->
   if e.which is 8 or e.which is 37 or order is 'prev' # Backspace, Left
-    event.preventDefault()
+    e.preventDefault()
     GyazzAC.prev()
 
   else if e.which is 13 or e.which is 39 or order is 'next' # Enter, Right
-    event.preventDefault()
+    e.preventDefault()
     GyazzAC.next()

@@ -23,7 +23,7 @@ module.exports = (grunt) ->
           'gyazzac.min.js': 'gyazzac.js'
       bookmarklet:
         options:
-          banner: 'javascript: !'
+          banner: 'javascript:'
         files:
           'bookmarklet.min.js': 'bookmarklet.js'
 

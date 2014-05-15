@@ -4,7 +4,7 @@
   "description": "kakko-E Gyazz Slide Bookmarklet",
   "main": "bookmarklet.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/server.js"
   },
   "author": "nekobato",
   "license": "BSD-2-Clause",
