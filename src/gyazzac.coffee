@@ -46,6 +46,7 @@ class DefaultC
     _e.hide() for _e in _current
     _e.show() for _e in _goto
 
+    # background
     _backGround = null
     _goto[0].find("a").each () ->
       if $(this).text() is "bg"
@@ -56,6 +57,10 @@ class DefaultC
     else
       $('body').attr("style", "")
 
+    # pageScroll
+    $(document).scrollTop(0)
+
+    # seekbar
     $("#seek-bar").animate {"width": _barWidth}, 100
 
 
@@ -115,8 +120,8 @@ window.onbeforeunload = () -> location.reload true
 # Config
 
 unless theme?
-  BASE_URL = "http://gyazzac.nekobato.net/"
-  #BASE_URL = "http://localhost:8888/"
+  #BASE_URL = "http://gyazzac.nekobato.net/"
+  BASE_URL = "http://localhost:8888/"
   CSS_URL = "gyazzac.min.css"
   C = new DefaultC
   GyazzAC = new GyazzA(C)
