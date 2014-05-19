@@ -159,8 +159,8 @@ window.onbeforeunload = () -> location.reload true
 # Config
 
 unless theme?
-  #BASE_URL = "http://gyazzac.nekobato.net/"
-  BASE_URL = "http://localhost:8888/"
+  BASE_URL = "http://gyazzac.nekobato.net/"
+  #BASE_URL = "http://localhost:8888/"
   CSS_URL = "gyazzac.min.css"
   C = new DefaultC
   GyazzAC = new GyazzA(C)
