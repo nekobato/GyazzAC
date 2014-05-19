@@ -6,6 +6,7 @@ html, body
   display: none !important
 
 body
+  width: 100%
   height: 100%
   background-attachment: fixed
   background-color: #E6E6EC !important
@@ -78,6 +79,8 @@ body
   bottom: 0
   width: 100%
   height: 34px
+  color: #DDDDDD
+  text-align: center
   background: rgba(90, 90, 90, 0.8)
   opacity: 0
   #seek
@@ -87,16 +90,36 @@ body
       background: #FF9966
       width: 0
       height: 100%
-
   #prev-btn, #next-btn, #index-btn
     margin: 0 1px
     padding: 0 10px
-    color: #DDDDDD
     font-size: 16px
     line-height: 28px
     cursor: pointer
-  #index-btn
+  #index-btn, #slideshow-btn
+    float: left
+  #slideshow-btn
+    width: 40px
+    line-height: 16px
+    font-size: 10px
+    text-align: center
+    cursor: pointer
+    margin: 6px 5px 0
+    color: #CC1111
+    background-color: #DDDDDD
+    border-radius: 2px
+  #slideshow-btn.active
+    background-color: #999999 !important
+  #fullscreen-btn
     float: right
+    text-align: left
+    margin: 6px 10px 0 0
+    width: 24px
+    font-size: 16px
+    color: #666666
+    line-height: 16px
+    background: #DDDDDD
+    cursor: pointer
 .ctrlbar:hover
   opacity: 1
 #indexes

@@ -11,8 +11,10 @@ class DefaultC
       "<div class='ctrlbar'>" +
         "<div id='seek'><div id='seek-bar'></div></div>" +
         "<span id='index-btn'>〓</span>" +
+        "<span id='slideshow-btn'>▶</span>" +
         "<span id='prev-btn'>◀</span>" +
         "<span id='next-btn'>▶</span>" +
+        "<span id='fullscreen-btn'>■</span>" +
       "</div>")
 
     # Seekbar events
@@ -39,6 +41,38 @@ class DefaultC
     $("#indexes li").bind "click", () ->
       GyazzAC.jump $(this).data("number")
 
+    # Fullscreen events
+    $("#fullscreen-btn").bind "click", () ->
+      console.log "fullscreen"
+      (document.body.requestFullScreen || document.body.mozRequestFullScreen || document.body.webkitRequestFullScreen)
+        .call(document.body)
+
+    # slideshow events
+    _slideInterval = null
+    _intervalTime = 5000 # default: 5 sec
+    $("#slideshow-btn").bind "click", () ->
+      console.log "slideshow"
+      $(this).toggleClass "active"
+      if not _slideInterval
+        _slideInterval = setInterval ->
+          console.log "interval"
+          $(document).trigger 'keydown', ['next']
+        , _intervalTime
+      else
+        clearInterval _slideInterval
+
+
+    # BGM settings
+    _bgm = null
+    $(".listedit0").eq(0).find("a").each () ->
+      if $(this).text() is "bgm"
+        _bgm = $(this).attr('href')
+        $(this).hide()
+    if _bgm
+      $(body).append '<audio id="bgm">' +
+        '<source src="#{_bgm}" ' +
+        'preload="auto" loop="true" autoplay="true">' +
+        '</audio>'
 
   pagingAction: (_number, _current, _goto)->
     _barWidth = Math.round(
@@ -46,14 +80,21 @@ class DefaultC
     _e.hide() for _e in _current
     _e.show() for _e in _goto
 
-    # background
+    # page decorations
     _backGround = null
+    _sound = null
     _goto[0].find("a").each () ->
-      if $(this).text() is "bg"
-        _backGround = $(this).attr('href')
-        $(this).hide()
+      _t = $(this)
+      if _t.text() is "bg"
+        _backGround = _t.attr('href')
+        _t.hide()
+      if _t.text() is "sound"
+        _sound = _t.attr('href')
+        _t.hide()
     if _backGround
       $('body').css("background-image", "url(#{_backGround})")
+    if _sound
+      # TODO sound
     else
       $('body').attr("style", "")
 
@@ -62,8 +103,6 @@ class DefaultC
 
     # seekbar
     $("#seek-bar").animate {"width": _barWidth}, 100
-
-
 
 
 class GyazzA
@@ -129,7 +168,6 @@ unless theme?
 # append GyazzA(C) style
 $('head').append(
   "<link rel='stylesheet' href='#{BASE_URL}#{CSS_URL}' type='text/css' />")
-
 
 
 # Basic events
