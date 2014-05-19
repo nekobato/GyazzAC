@@ -69,9 +69,7 @@ class DefaultC
         _bgm = $(this).attr('href')
         $(this).hide()
     if _bgm
-      console.log "bgm detected"
-      $("body").append '<audio id="bgm"' +
-        " src='#{_bgm}' preload loop autoplay loop>" +
+      $("body").append "<audio id='bgm' src='#{_bgm}' preload loop autoplay>" +
         '</audio>'
 
   pagingAction: (_number, _current, _goto)->
@@ -94,7 +92,9 @@ class DefaultC
     if _backGround
       $('body').css("background-image", "url(#{_backGround})")
     if _sound
-      # TODO sound
+      $("body").append "<audio id='sound_#{_number}' src='#{_sound}' preload autoplay>" +
+        '</audio>'
+
     else
       $('body').attr("style", "")
 
