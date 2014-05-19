@@ -64,14 +64,14 @@ class DefaultC
 
     # BGM settings
     _bgm = null
-    $(".listedit0").eq(0).find("a").each () ->
+    $("#listbg0").find("a").each () ->
       if $(this).text() is "bgm"
         _bgm = $(this).attr('href')
         $(this).hide()
     if _bgm
-      $(body).append '<audio id="bgm">' +
-        '<source src="#{_bgm}" ' +
-        'preload="auto" loop="true" autoplay="true">' +
+      console.log "bgm detected"
+      $("body").append '<audio id="bgm"' +
+        " src='#{_bgm}' preload loop autoplay loop>" +
         '</audio>'
 
   pagingAction: (_number, _current, _goto)->
