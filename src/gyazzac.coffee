@@ -49,7 +49,6 @@ class DefaultC
       else
         (document.exitFullScreen || document.mozCancelFullScreen || document.webkitExitFullscreen).call(document)
 
-
     # slideshow events
     _slideInterval = null
     _intervalTime = 5000 # default: 5 sec
@@ -64,7 +63,6 @@ class DefaultC
       else
         clearInterval _slideInterval
 
-
     # BGM settings
     _bgm = null
     $("#listbg0").find("a").each () ->
@@ -74,6 +72,12 @@ class DefaultC
     if _bgm
       $("body").append "<audio id='bgm' src='#{_bgm}' preload loop autoplay>" +
         '</audio>'
+
+    # Reset Table
+    $("span")
+      .filter () ->
+        $(this).css('position') == 'absolute'
+      .css("position", "relative")
 
   pagingAction: (_number, _current, _goto)->
     _barWidth = Math.round(
@@ -97,7 +101,6 @@ class DefaultC
     if _sound
       $("body").append "<audio id='sound_#{_number}' src='#{_sound}' preload autoplay>" +
         '</audio>'
-
     else
       $('body').attr("style", "")
 
