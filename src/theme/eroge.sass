@@ -1,0 +1,130 @@
+html, body
+  margin: 0
+  padding: 0
+
+#historyimage, form, .links
+  display: none !important
+
+body
+  width: 100%
+  height: 100%
+  background-attachment: fixed
+  background-color: #000000 !important
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+  font-family: "helvetica neue", helvetica, arial, geneva, sans-serif !important
+  font-size: 13px !important
+  color: #676482 !important
+  text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px
+
+
+.title
+  position: relative
+  top: 50%
+  margin: -3em auto 0 !important
+  padding: 0 !important
+  width: 100%
+  text-indent: 0 !important
+  border-left: 0 !important
+  border-right: 0 !important
+  .wordtitle
+    padding-left: 40px
+    text-align: center
+    line-height: 3em
+  #title
+    width: 80%
+    font-family: "helvetica neue", helvetica, arial, geneva, sans-serif !important
+    font-size: 2.2em !important
+    color: #676482 !important
+    text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px
+    text-decoration: none
+
+#contents
+  position: fixed
+  bottom: 20px
+  margin: 0
+  width: 90%
+  word-wrap: break-word
+  background: rbga(90, 90, 90, 100)
+  text-align: left
+  div.listedit0:before
+    content: none
+  .listedit0, .listedit1, .listedit2, .listedit3, .listedit4, .listedit5, .listedit7, .listedit8
+    display: inline
+    color: #FFFFFF !important
+    margin: 0
+    font-size: 2em
+
+.ctrlbar
+  position: fixed
+  bottom: 0
+  width: 100%
+  height: 34px
+  color: #DDDDDD
+  text-align: center
+  background: rgba(90, 90, 90, 0.8)
+  opacity: 0
+  #seek
+    height: 6px
+    background: #CCCCCC
+    #seek-bar
+      background: #FF9966
+      width: 0
+      height: 100%
+  #prev-btn, #next-btn, #index-btn
+    margin: 0 1px
+    padding: 0 10px
+    font-size: 16px
+    line-height: 28px
+    cursor: pointer
+  #index-btn, #slideshow-btn
+    float: left
+  #slideshow-btn
+    width: 40px
+    line-height: 16px
+    font-size: 10px
+    text-align: center
+    cursor: pointer
+    margin: 6px 5px 0
+    color: #CC1111
+    background-color: #DDDDDD
+    border-radius: 2px
+  #slideshow-btn.active
+    background-color: #999999 !important
+  #fullscreen-btn
+    float: right
+    text-align: left
+    margin: 6px 10px 0 0
+    width: 24px
+    font-size: 16px
+    color: #666666
+    line-height: 16px
+    background: #DDDDDD
+    cursor: pointer
+.ctrlbar:hover
+  opacity: 1
+#indexes
+  position: fixed
+  top: 10px
+  left: 0
+  bottom: 34px
+  display: none
+  margin: 0
+  padding: 10px 0 0 0
+  width: 200px
+  overflow-x: hidden
+  overflow-y: scroll
+  background: rgba(50, 50, 50, 0.8)
+  li
+    list-style: square
+    padding-left: 10px
+    line-height: 2em
+    color: #DDDDDD
+    cursor: pointer
+  li:hover
+    background: #888888
+  li.active
+    background: #666666
+
+/* bottom of doc */

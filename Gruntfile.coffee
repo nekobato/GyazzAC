@@ -7,8 +7,13 @@ module.exports = (grunt) ->
       options:
         sourceMap: no
       dist:
-        files:
-          'gyazzac.js': 'src/gyazzac.coffee'
+        files: [{
+          expand: yes
+          cwd: 'src'
+          src: [ '**/*.coffee' ]
+          dest: './'
+          ext: '.js'
+        }]
       bookmarklet:
         options:
           bare: false
@@ -33,18 +38,23 @@ module.exports = (grunt) ->
         noCache: true
         trace: true
       dist:
-        files:
-          'gyazzac.min.css': 'src/gyazzac.sass'
+        files: [{
+          expand: yes
+          cwd: 'src'
+          src: [ '**/*.sass' ]
+          dest: './'
+          ext: '.min.css'
+        }]
 
     watch:
       options:
         dateFormat: (time) ->
           grunt.log.writeln "The watch finished in #{time}ms at #{new Date().toLocaleTimeString()}"
       coffee:
-        files: ['src/*.coffee']
+        files: ['src/**/*.coffee']
         tasks: ['coffee:dist']
       sass:
-        files: ['src/*.sass']
+        files: ['src/**/*.sass']
         tasks: ['sass']
 
   # compile

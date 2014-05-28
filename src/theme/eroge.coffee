@@ -1,6 +1,6 @@
 # Class
 
-class DefaultC
+class Eroge
 
   indexes: []
 
@@ -44,11 +44,8 @@ class DefaultC
     # Fullscreen events
     $("#fullscreen-btn").bind "click", () ->
       console.log "fullscreen"
-      if ! document.fullScreenElement and ! document.webkitFullscreenElement and ! document.mozFullScreenElement
-        (document.body.requestFullScreen || document.body.mozRequestFullScreen || document.body.webkitRequestFullScreen).call(document.body)
-      else
-        (document.exitFullScreen || document.mozCancelFullScreen || document.webkitExitFullscreen).call(document)
-
+      (document.body.requestFullScreen || document.body.mozRequestFullScreen || document.body.webkitRequestFullScreen)
+        .call(document.body)
 
     # slideshow events
     _slideInterval = null
@@ -108,78 +105,10 @@ class DefaultC
     $("#seek-bar").animate {"width": _barWidth}, 100
 
 
-class GyazzA
-
-  _pageInitializer = (_element, _rows) ->
-    _rows ?= []
-    _rows.push _element
-    _next = _element.next("div")
-    if _next.hasClass("listedit0") or _next.text() is ''
-      return _rows
-    unless _next.hasClass("listedit0")
-      return arguments.callee _next, _rows
-
-  _number = 0
-  _pages = [[$(".title")]]
-
-  constructor: (@C) ->
-    console.log "page constructor"
-    $(".listedit0").each () ->
-      _pages.push _pageInitializer $(this)
-    @C.applyTheme()
-
-  prev: () ->
-    console.log "prev"
-    if _number > 0
-      @C.pagingAction _number-1, _pages[_number], _pages[_number-1]
-      _number--
-
-  next: () ->
-    console.log "next"
-    if _number < _pages.length-1
-      @C.pagingAction _number+1, _pages[_number], _pages[_number+1]
-      _number++
-
-  jump: (_goto) ->
-    console.log "jump to #{_goto}"
-    @C.pagingAction _goto, _pages[_number], _pages[_goto]
-    _number = _goto
-
-
-# Main
-
-# Gyazzイベントには死んでもらいたい
-$("*").unbind()
-$(document).unbind()
-# 全てのreloadを生まれる前に消し去りたい
-clearTimeout reloadTimeout
-# 用があるまでコンテンツには消えてもらいたい
-$('#contents > div').attr("style", "display:none")
-# 戻るボタンで元のGyazzページへ戻る
-window.onbeforeunload = () -> location.reload true
-
-
 # Config
 
 unless window.C?
   #BASE_URL = "http://gyazzac.nekobato.net/"
   window.BASE_URL = "http://localhost:8888/"
-  window.CSS_URL = "gyazzac.min.css"
-  window.C = new DefaultC
-GyazzAC = new GyazzA(window.C)
-
-# append GyazzA(C) style
-$('head').append(
-  "<link rel='stylesheet' href='#{window.BASE_URL}#{window.CSS_URL}' type='text/css' />")
-
-
-# Basic events
-
-$(document).on 'keydown', (e, order) ->
-  if e.which is 8 or e.which is 37 or order is 'prev' # Backspace, Left
-    e.preventDefault()
-    GyazzAC.prev()
-
-  else if e.which is 13 or e.which is 39 or order is 'next' # Enter, Right
-    e.preventDefault()
-    GyazzAC.next()
+  window.CSS_URL = "theme/eroge.min.css"
+  window.C = new Eroge
