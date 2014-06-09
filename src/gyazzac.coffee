@@ -79,7 +79,23 @@ class DefaultC
         $(this).css('position') == 'absolute'
       .css("position", "relative")
 
-  pagingAction: (_number, _current, _goto)->
+    # Set fontsize
+    _setFontSize = (width) ->
+
+      style = ".listedit0 {font-size: " + Math.round(width/20) + "px !important;}" +
+        ".listedit1 {font-size: " + Math.round(width/25) + "px !important;}" +
+        ".listedit2,.listedit3,.listedit4,.listedit5,.listedit6,.listedit7,.listedit8" +
+        "{font-size: " + Math.round(width/30) + "px !important;}"
+      if $("#style-fontsize").length
+        $("#style-fontsize").html style
+      else
+        $("head").append "<style id='style-fontsize'>#{style}</style>"
+    _setFontSize $(window).width()
+
+    $(window).resize () ->
+      _setFontSize $(this).width()
+
+  pagingAction: (_number, _current, _goto) ->
     _barWidth = Math.round(
       $("#seek").width() / $(".listedit0").length * _number )
     _e.hide() for _e in _current
