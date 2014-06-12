@@ -181,8 +181,8 @@ window.onbeforeunload = () -> location.reload true
 # Config
 
 unless window.C?
-  #BASE_URL = "http://gyazzac.nekobato.net/"
-  window.BASE_URL = "http://localhost:8888/"
+  window.BASE_URL = "http://gyazzac.nekobato.net/"
+  #window.BASE_URL = "http://localhost:8888/"
   window.CSS_URL = "gyazzac.min.css"
   window.C = new DefaultC
 GyazzAC = new GyazzA(window.C)
