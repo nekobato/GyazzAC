@@ -82,10 +82,10 @@ class DefaultC
     # Set fontsize
     _setFontSize = (width) ->
 
-      style = ".listedit0 {font-size: " + Math.round(width/20) + "px !important;}" +
-        ".listedit1 {font-size: " + Math.round(width/25) + "px !important;}" +
+      style = ".listedit0 {font-size: " + Math.round(width/26) + "px !important;}" +
+        ".listedit1 {font-size: " + Math.round(width/30) + "px !important;}" +
         ".listedit2,.listedit3,.listedit4,.listedit5,.listedit6,.listedit7,.listedit8" +
-        "{font-size: " + Math.round(width/30) + "px !important;}"
+        "{font-size: " + Math.round(width/34) + "px !important;}"
       if $("#style-fontsize").length
         $("#style-fontsize").html style
       else
