@@ -24,6 +24,7 @@ module.exports = (grunt) ->
         files:
           'bookmarklet.min.js': 'bookmarklet.js'
           './test/bookmarklet-local.min.js': 'bookmarklet-local.js'
+          'gyazzac.min.js': 'gyazzac.js'
 
     sass:
       options:
