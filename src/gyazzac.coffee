@@ -174,6 +174,7 @@ window.onbeforeunload = () -> location.reload true
 # Config
 
 unless window.C?
+  window.BASE_URL = window.BASE_URL || 'http://gyazzac.nekobato.net/'
   window.CSS_URL = "gyazzac.min.css"
   window.C = new DefaultC
 GyazzAC = new GyazzA(window.C)
