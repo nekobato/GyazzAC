@@ -14,23 +14,16 @@ module.exports = (grunt) ->
           dest: './'
           ext: '.js'
         }]
-      bookmarklet:
-        options:
-          bare: false
-        files:
-          'bookmarklet.js': 'src/bookmarklet.coffee'
 
     uglify:
       options:
         compress: true
-      dist:
-        files:
-          'gyazzac.min.js': 'gyazzac.js'
       bookmarklet:
         options:
-          banner: 'javascript:'
+          banner: 'javascript: !'
         files:
           'bookmarklet.min.js': 'bookmarklet.js'
+          './test/bookmarklet-local.min.js': 'bookmarklet-local.js'
 
     sass:
       options:

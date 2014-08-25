@@ -43,7 +43,6 @@ class DefaultC
 
     # Fullscreen events
     $("#fullscreen-btn").bind "click", () ->
-      console.log "fullscreen"
       if ! document.fullScreenElement and ! document.webkitFullscreenElement and ! document.mozFullScreenElement
         (document.body.requestFullScreen || document.body.mozRequestFullScreen || document.body.webkitRequestFullScreen).call(document.body)
       else
@@ -53,11 +52,9 @@ class DefaultC
     _slideInterval = null
     _intervalTime = 5000 # default: 5 sec
     $("#slideshow-btn").bind "click", () ->
-      console.log "slideshow"
       $(this).toggleClass "active"
       if not _slideInterval
         _slideInterval = setInterval ->
-          console.log "interval"
           $(document).trigger 'keydown', ['next']
         , _intervalTime
       else
@@ -142,25 +139,21 @@ class GyazzA
   _pages = [[$(".title")]]
 
   constructor: (@C) ->
-    console.log "page constructor"
     $(".listedit0").each () ->
       _pages.push _pageInitializer $(this)
     @C.applyTheme()
 
   prev: () ->
-    console.log "prev"
     if _number > 0
       @C.pagingAction _number-1, _pages[_number], _pages[_number-1]
       _number--
 
   next: () ->
-    console.log "next"
     if _number < _pages.length-1
       @C.pagingAction _number+1, _pages[_number], _pages[_number+1]
       _number++
 
   jump: (_goto) ->
-    console.log "jump to #{_goto}"
     @C.pagingAction _goto, _pages[_number], _pages[_goto]
     _number = _goto
 
@@ -170,8 +163,8 @@ class GyazzA
 # Gyazzイベントには死んでもらいたい
 $("*").unbind()
 $(document).unbind()
-# 全てのreloadを生まれる前に消し去りたい
-clearTimeout reloadTimeout
+# socketはあると崩れるので捨ててしまおう
+window.gs = null
 # 用があるまでコンテンツには消えてもらいたい
 $('#contents > div').attr("style", "display:none")
 # 戻るボタンで元のGyazzページへ戻る
@@ -181,8 +174,6 @@ window.onbeforeunload = () -> location.reload true
 # Config
 
 unless window.C?
-  window.BASE_URL = "http://gyazzac.nekobato.net/"
-  #window.BASE_URL = "http://localhost:8888/"
   window.CSS_URL = "gyazzac.min.css"
   window.C = new DefaultC
 GyazzAC = new GyazzA(window.C)
