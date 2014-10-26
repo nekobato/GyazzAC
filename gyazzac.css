@@ -70,16 +70,23 @@ body {
 .gyazz-ac {
   font-family: "helvetica neue", helvetica, arial, geneva, sans-serif; }
 .gyazz-ac .ac-page {
+  display: none;
   position: relative;
-  margin: 3% auto 30%;
+  margin: 3% auto 0;
   padding: 2% 5%;
   border: 1px solid #333333;
   width: 90%;
   min-height: 90%;
   text-align: center;
   font-size: 28px; }
+@media print {
+  .gyazz-ac .ac-page {
+    display: block;
+    margin: 3% auto 30%; } }
 .gyazz-ac .ac-page:last-child {
   margin: 0 auto 3%; }
+.gyazz-ac .ac-page.active {
+  display: block; }
 .gyazz-ac .ac-title {
   margin-top: 0;
   width: 100%;

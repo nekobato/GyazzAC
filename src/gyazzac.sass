@@ -70,16 +70,22 @@ body
   font-family: "helvetica neue", helvetica, arial, geneva, sans-serif
 
   .ac-page
+    display: none
     position: relative
-    margin: 3% auto 30%
+    margin: 3% auto 0
     padding: 2% 5%
     border: 1px solid #333
     width: 90%
     min-height: 90%
     text-align: center
     font-size: 28px
+    @media print
+      display: block
+      margin: 3% auto 30%
   .ac-page:last-child
     margin: 0 auto 3%
+  .ac-page.active
+    display: block
 
   .ac-title
     margin-top: 0
@@ -163,3 +169,4 @@ body
   height: 3px
   background: #F00
   transition: width 0.1s
+

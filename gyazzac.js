@@ -2,7 +2,7 @@
   var GyazzA;
 
   GyazzA = (function() {
-    var ac_lines, ac_page, attachAC, fetchGyazz, gyazz_lines, observer, progress, refresh;
+    var ac_lines, ac_page, ac_page_total, attachAC, fetchGyazz, gyazz_lines, observer, progress, refresh;
 
     function GyazzA() {}
 
@@ -11,6 +11,8 @@
     ac_lines = [];
 
     ac_page = 0;
+
+    ac_page_total = 0;
 
     observer = null;
 
@@ -61,30 +63,34 @@
         }
         pages[n].innerHTML += "<div class='ac-line ac-" + line.level + "'>" + line.html + "</div>";
       }
+      ac_page_total = pages.length;
       for (_j = 0, _len1 = pages.length; _j < _len1; _j++) {
         page = pages[_j];
         ac.appendChild(page);
       }
       $('#gyazz_ac').html(ac);
+      $('.ac-page').eq(ac_page).addClass('active');
     };
 
-    progress = setInterval(function() {
+    progress = function() {
       var pp;
-      pp = $(document).scrollTop() * 100 / ($(document).height() - $(window).height());
+      pp = (ac_page + 1) / (ac_page_total + 1) * 100;
       return $('.progress-bar').css('width', Math.floor(pp) + '%');
-    }, 1000);
+    };
 
     GyazzA.prototype.prev = function() {
       if (ac_page > 0) {
-        $(document).scrollTop($('.ac-page').eq(ac_page - 1).offset().top - 20);
-        return ac_page--;
+        $('#gyazz_ac .active').removeClass('active').prev().addClass('active');
+        ac_page--;
+        return progress();
       }
     };
 
     GyazzA.prototype.next = function() {
       if ($('.ac-page').eq(ac_page + 1).length) {
-        $(document).scrollTop($('.ac-page').eq(ac_page + 1).offset().top - 20);
-        return ac_page++;
+        $('#gyazz_ac .active').removeClass('active').next().addClass('active');
+        ac_page++;
+        return progress();
       }
     };
 

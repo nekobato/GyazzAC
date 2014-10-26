@@ -3,6 +3,7 @@ class GyazzA
   gyazz_lines = []
   ac_lines = []
   ac_page = 0
+  ac_page_total = 0
   observer = null
 
 
@@ -51,28 +52,35 @@ class GyazzA
           pages[n].className = 'ac-page'
       pages[n].innerHTML += "<div class='ac-line ac-#{line.level}'>#{line.html}</div>"
 
+    ac_page_total = pages.length
+
     for page in pages
       ac.appendChild(page)
 
     $('#gyazz_ac').html(ac)
+    $('.ac-page').eq(ac_page).addClass 'active'
     return
 
 
-  progress = setInterval ->
-    pp = $(document).scrollTop() * 100 / ($(document).height() - $(window).height())
+  progress = ->
+    pp = (ac_page+1) / (ac_page_total+1) * 100
     $('.progress-bar').css('width', Math.floor(pp) + '%')
-  , 1000
 
 
   prev: ->
     if ac_page > 0
-      $(document).scrollTop $('.ac-page').eq(ac_page-1).offset().top - 20
+      $('#gyazz_ac .active').removeClass 'active'
+      .prev().addClass 'active'
       ac_page--
+      progress()
 
   next: ->
     if $('.ac-page').eq(ac_page+1).length
-      $(document).scrollTop $('.ac-page').eq(ac_page+1).offset().top - 20
+      $('#gyazz_ac .active').removeClass 'active'
+      .next().addClass 'active'
       ac_page++
+      progress()
+
 
 
   c: -> # init
