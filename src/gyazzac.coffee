@@ -26,6 +26,7 @@ class GyazzA
 
   attachAC = ->
 
+     window.BASE_URL || = 'http://gyazzac.nekobato.net/'
     $('head').append "<link rel='stylesheet' href='#{window.BASE_URL}gyazzac.css' type='text/css'>"
     $('body').prepend '<div id="gyazz_ac" class="gyazz-ac"></div>'
     $('body').append '<div class="progress-bar"></div>'
