@@ -21,21 +21,22 @@ body {
   color: #676482 !important;
   text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px; }
 
-.title, #links {
+.title, #links, .links {
   display: none; }
 
 #contents {
   position: fixed;
   left: 0;
   right: 0;
-  top: -90%;
+  top: -300px;
   margin: 0 auto;
   padding: 20px;
   width: 80%;
-  height: 90%;
+  height: 300px;
   background: white;
   border-radius: 10px;
-  transition: top 0.3s; }
+  transition: top 0.3s;
+  overflow-y: scroll; }
 #contents div {
   position: relative; }
 
@@ -74,7 +75,6 @@ body {
   position: relative;
   margin: 3% auto 0;
   padding: 2% 5%;
-  border: 1px solid #333333;
   width: 90%;
   min-height: 90%;
   text-align: center;
@@ -82,7 +82,8 @@ body {
 @media print {
   .gyazz-ac .ac-page {
     display: block;
-    margin: 3% auto 30%; } }
+    margin: 3% auto 30%;
+    border: 1px solid #333333; } }
 .gyazz-ac .ac-page:last-child {
   margin: 0 auto 3%; }
 .gyazz-ac .ac-page.active {
