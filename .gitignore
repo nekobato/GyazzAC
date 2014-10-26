@@ -2,8 +2,3 @@
 
 node_modules
 test
-
-*.js
-!*.min.js
-*.css
-!*.css
