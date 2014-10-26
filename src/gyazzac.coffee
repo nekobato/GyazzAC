@@ -70,7 +70,7 @@ class GyazzA
       ac_page--
 
   next: ->
-    if $('.ac_page').eq(ac_page+1)
+    if $('.ac-page').eq(ac_page+1).length
       $(document).scrollTop $('.ac-page').eq(ac_page+1).offset().top - 20
       ac_page++
 
