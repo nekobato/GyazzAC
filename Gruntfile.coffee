@@ -5,7 +5,7 @@ module.exports = (grunt) ->
 
     coffee:
       options:
-        sourceMap: no
+        sourceMap: yes
       dist:
         files: [{
           expand: yes
@@ -35,9 +35,9 @@ module.exports = (grunt) ->
         files: [{
           expand: yes
           cwd: 'src'
-          src: [ '**/*.sass' ]
-          dest: './'
-          ext: '.min.css'
+          src: [ '**/*.{sass,scss}' ]
+          dest: 'src'
+          ext: '.css'
         }]
 
     watch:
@@ -46,17 +46,28 @@ module.exports = (grunt) ->
           grunt.log.writeln "The watch finished in #{time}ms at #{new Date().toLocaleTimeString()}"
       coffee:
         files: ['src/**/*.coffee']
-        tasks: ['coffee:dist']
+        tasks: ['coffee']
       sass:
         files: ['src/**/*.sass']
-        tasks: ['sass']
+        tasks: ['sass', 'autoprefixer']
+
+    autoprefixer:
+      options:
+        browsers: ['last 2 versions', 'ie 9']
+        silent: true
+      file:
+        expand: true
+        flatten: true
+        src: 'src/*.css'
+        dist: './'
 
   # compile
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-sass'
+  grunt.loadNpmTasks 'grunt-autoprefixer'
   # watch
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
-  grunt.registerTask 'build', ['coffee', 'uglify', 'sass']
+  grunt.registerTask 'build', ['coffee', 'uglify', 'sass', 'autoprefixer']
   grunt.registerTask 'default', ['build', 'watch']

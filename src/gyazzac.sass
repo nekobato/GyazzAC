@@ -1,21 +1,17 @@
+*
+  box-sizing: border-box
+
 html, body
   margin: 0
   padding: 0
   height: 100%
-
-#historyimage, form, .links
-  display: none !important
 
 body
   width: 100%
   height: 100%
   background-attachment: fixed
   background-color: #E6E6EC !important
-  background-image: -webkit-linear-gradient(#E6E6EC, #B7B6CB)
-  background-image:    -moz-linear-gradient(#E6E6EC, #B7B6CB)
-  background-image:      -o-linear-gradient(#E6E6EC, #B7B6CB)
-  background-image:     -ms-linear-gradient(#E6E6EC, #B7B6CB)
-  background-image:         linear-gradient(#E6E6EC, #B7B6CB)
+  background-image: linear-gradient(#E6E6EC, #B7B6CB)
   background-repeat: no-repeat
   background-size: cover
   background-position: center center
@@ -24,111 +20,146 @@ body
   color: #676482 !important
   text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px
 
-
-.title
-  position: relative
-  top: 50%
-  margin: -3em auto 0 !important
-  padding: 0 !important
-  width: 100%
-  text-indent: 0 !important
-  border-left: 0 !important
-  border-right: 0 !important
-  .wordtitle
-    padding-left: 40px
-    text-align: center
-    line-height: 3em
-  #title
-    width: 80%
-    font-family: "helvetica neue", helvetica, arial, geneva, sans-serif !important
-    font-size: 2.2em !important
-    color: #676482 !important
-    text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px
-    text-decoration: none
+.title, #links
+  display: none
 
 #contents
-  margin: 0 auto 0
-  width: 90%
-  word-wrap: break-word
-  div.listedit0:before
-    content: none
-  .listedit0
-    margin: 40px 0 0 0
-    text-align: center
-  .listedit1
-    margin-top: 0.8em
-  .listedit2
-    margin-top: 0.3em
+  position: fixed
+  left: 0
+  right: 0
+  top: -90%
+  margin: 0 auto
+  padding: 20px
+  width: 80%
+  height: 90%
+  background: #fff
+  border-radius: 10px
+  transition: top 0.3s
+  div
+    position: relative
+#contents.pulldown
+  top: 0
+  bottom: auto
+#contents:after
+  content: "===="
+  display: block
+  position: absolute
+  bottom: -12px
+  left: 0
+  right: 0
+  margin: 0 auto
+  width: 100px
+  text-align: center
+  background-color: #fff
+  border-bottom-left-radius: 10px
+  border-bottom-right-radius: 10px
+  cursor: pointer
 
-.ctrlbar
+
+.gyazz-ac, .gyazz-ac > div
+  width: 100%
+  height: 100%
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.gyazz-ac
+
+  font-family: "helvetica neue", helvetica, arial, geneva, sans-serif
+
+  .ac-page
+    position: relative
+    margin: 3% auto 30%
+    padding: 2% 5%
+    border: 1px solid #333
+    width: 90%
+    min-height: 90%
+    text-align: center
+    font-size: 28px
+  .ac-page:last-child
+    margin: 0 auto 3%
+
+  .ac-title
+    margin-top: 0
+    width: 100%
+    font-size: 48px
+    border: none
+    text-align: center
+    p
+      position: absolute
+      top: 30%
+      left: 0
+      width: 100%
+      margin: auto 0
+      padding: 0.5em
+      border: 1px solid #aaa
+      background-color: #e0e0e0
+      font-weight: bold
+      vertical-align: middle
+
+  .ac-single .ac-line
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto
+    width: 90%
+    height: 1em
+
+  .ac-line
+    text-align: left
+
+  .ac-listedit0
+    margin-bottom: 20px
+    text-align: center
+    font-size: 48px
+
+  .ac-listedit1
+    margin-top: 10px
+    font-size: 36px
+  .ac-listedit1:before
+    content: "■"
+    color: #00b000
+
+  .ac-listedit2
+    text-indent: 2em
+  .ac-listedit2:before
+    content: "■"
+    color: #00b000
+  .ac-listedit3
+    text-indent: 3em
+  .ac-listedit3:before
+    content: "■"
+    color: #00b000
+  .ac-listedit4
+    text-indent: 4em
+  .ac-listedit4:before
+    content: "■"
+    color: #00b000
+  .ac-listedit5
+    text-indent: 5em
+  .ac-listedit5:before
+    content: "■"
+    color: #00b000
+  .ac-listedit6
+    text-indent: 6em
+  .ac-listedit6:before
+    content: "■"
+    color: #00b000
+
+  span
+    position: relative !important
+    left: auto !important
+
+.progress-bar
+  content: ""
   position: fixed
   bottom: 0
-  width: 100%
-  height: 34px
-  color: #DDDDDD
-  text-align: center
-  background: rgba(90, 90, 90, 0.8)
-  opacity: 0
-  #seek
-    height: 6px
-    background: #CCCCCC
-    #seek-bar
-      background: #FF9966
-      width: 0
-      height: 100%
-  #prev-btn, #next-btn, #index-btn
-    margin: 0 1px
-    padding: 0 10px
-    font-size: 16px
-    line-height: 28px
-    cursor: pointer
-  #index-btn, #slideshow-btn
-    float: left
-  #slideshow-btn
-    width: 40px
-    line-height: 16px
-    font-size: 10px
-    text-align: center
-    cursor: pointer
-    margin: 6px 5px 0
-    color: #CC1111
-    background-color: #DDDDDD
-    border-radius: 2px
-  #slideshow-btn.active
-    background-color: #999999 !important
-  #fullscreen-btn
-    float: right
-    text-align: left
-    margin: 6px 10px 0 0
-    width: 24px
-    font-size: 16px
-    color: #666666
-    line-height: 16px
-    background: #DDDDDD
-    cursor: pointer
-.ctrlbar:hover
-  opacity: 1
-#indexes
-  position: fixed
-  top: 10px
   left: 0
-  bottom: 34px
-  display: none
-  margin: 0
-  padding: 10px 0 0 0
-  width: 200px
-  overflow-x: hidden
-  overflow-y: scroll
-  background: rgba(50, 50, 50, 0.8)
-  li
-    list-style: square
-    padding-left: 10px
-    line-height: 2em
-    color: #DDDDDD
-    cursor: pointer
-  li:hover
-    background: #888888
-  li.active
-    background: #666666
-
-/* bottom of doc */
+  width: 1%
+  height: 3px
+  background: #F00
+  transition: width 0.1s
