@@ -6,7 +6,7 @@ Gyazzがかっこつけたスライドになるブックマークレット
 ## つかいかた
 
 ```
-javascript:(function(){var a;a=document.createElement("script"),a.setAttribute("src","http://nekobato.github.io/GyazzAC/gyazzac.min.js"),document.getElementsByTagName("head")[0].appendChild(a)}).call(this);
+javascript: !(function(){var a;window.BASE_URL="https://nekobato.github.io/GyazzAC/",a=document.createElement("script"),a.setAttribute("src",""+window.BASE_URL+"gyazzac.js"),document.getElementsByTagName("head")[0].appendChild(a)}).call(this);
 ```
 
 をブックマークに登録
