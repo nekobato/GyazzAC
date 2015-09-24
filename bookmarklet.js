@@ -1,7 +1,7 @@
 (function() {
   var s;
 
-  window.BASE_URL = "http://nekobato.net/gyazzac/";
+  window.BASE_URL = "https://nekobato.github.io/GyazzAC/";
 
   s = document.createElement('script');
 

@@ -17,7 +17,7 @@ module.exports = (grunt) ->
 
     uglify:
       options:
-        compress: true
+        compress: {}
       bookmarklet:
         options:
           banner: 'javascript: !'
