@@ -88,7 +88,7 @@ body {
   margin: 0 auto 3%; }
 .gyazz-ac .ac-page.active {
   display: block; }
-.gyazz-ac .ac-title {
+.gyazz-ac .ac-title.active {
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -99,7 +99,7 @@ body {
   font-size: 48px;
   border: none;
   text-align: center; }
-.gyazz-ac .ac-title p {
+.gyazz-ac .ac-title.active p {
   width: 100%;
   margin: auto 0;
   padding: 0.5em;
