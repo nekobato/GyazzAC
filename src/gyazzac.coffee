@@ -6,6 +6,8 @@ class GyazzA
   ac_page_total = 0
   observer = null
 
+  window_size = '980'
+
 
   fetchGyazz = ->
 
@@ -31,7 +33,15 @@ class GyazzA
     $('head').append "<link rel='stylesheet' href='#{window.BASE_URL}gyazzac.css' type='text/css'>"
     $('body').prepend '<div id="gyazz_ac" class="gyazz-ac"></div>'
     $('body').append '<div class="progress-bar"></div>'
-    return
+
+    # resizeの度にzoomを変更する
+    timer = false
+    $(window).resize ->
+      unless timer is false
+        clearTimeout(timer)
+      timer = setTimeout ->
+        document.body.style.zoom = $(document).width() / window_size
+      , 200
 
 
   refresh = ->

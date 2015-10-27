@@ -36,7 +36,7 @@ module.exports = (grunt) ->
           expand: yes
           cwd: 'src'
           src: [ '**/*.{sass,scss}' ]
-          dest: 'src'
+          dest: './'
           ext: '.css'
         }]
 
@@ -58,7 +58,7 @@ module.exports = (grunt) ->
       file:
         expand: true
         flatten: true
-        src: 'src/*.css'
+        src: '*.css'
         dist: './'
 
   # compile

@@ -2,7 +2,7 @@
   var GyazzA;
 
   GyazzA = (function() {
-    var ac_lines, ac_page, ac_page_total, attachAC, fetchGyazz, gyazz_lines, observer, progress, refresh;
+    var ac_lines, ac_page, ac_page_total, attachAC, fetchGyazz, gyazz_lines, observer, progress, refresh, window_size;
 
     function GyazzA() {}
 
@@ -15,6 +15,8 @@
     ac_page_total = 0;
 
     observer = null;
+
+    window_size = '980';
 
     fetchGyazz = function() {
       var changeFlag;
@@ -38,10 +40,20 @@
     };
 
     attachAC = function() {
+      var timer;
       window.BASE_URL || (window.BASE_URL = 'https://nekobato.github.io/GyazzAC/');
       $('head').append("<link rel='stylesheet' href='" + window.BASE_URL + "gyazzac.css' type='text/css'>");
       $('body').prepend('<div id="gyazz_ac" class="gyazz-ac"></div>');
       $('body').append('<div class="progress-bar"></div>');
+      timer = false;
+      return $(window).resize(function() {
+        if (timer !== false) {
+          clearTimeout(timer);
+        }
+        return timer = setTimeout(function() {
+          return document.body.style.zoom = $(document).width() / window_size;
+        }, 200);
+      });
     };
 
     refresh = function() {

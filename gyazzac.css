@@ -89,15 +89,17 @@ body {
 .gyazz-ac .ac-page.active {
   display: block; }
 .gyazz-ac .ac-title {
-  margin-top: 0;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  margin: auto;
+  padding: 0;
   width: 100%;
+  height: 100%;
   font-size: 48px;
   border: none;
   text-align: center; }
 .gyazz-ac .ac-title p {
-  position: absolute;
-  top: 30%;
-  left: 0;
   width: 100%;
   margin: auto 0;
   padding: 0.5em;
@@ -105,15 +107,13 @@ body {
   background-color: #e0e0e0;
   font-weight: bold;
   vertical-align: middle; }
-.gyazz-ac .ac-single .ac-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.gyazz-ac .ac-single.active {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+.gyazz-ac .ac-single.active .ac-line {
   margin: auto;
-  width: 90%;
-  height: 1em; }
+  width: 90%; }
 .gyazz-ac .ac-line {
   text-align: left; }
 .gyazz-ac .ac-listedit0 {
