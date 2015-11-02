@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-color: #e6e6ec !important;
+  background-image: linear-gradient(#e6e6ec, #b7b6cb);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-family: "helvetica neue", helvetica, arial, geneva, sans-serif !important;
+  font-size: 13px !important;
+  color: #676482 !important;
+  text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px;
+}
+
+.title, #links, .links {
+  display: none;
+}
+
+#contents {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -300px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 80%;
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+  transition: top 0.3s;
+  overflow-y: scroll;
+  div {
+    position: relative;
+  }
+}
+
+#contents.pulldown {
+  top: 0;
+  bottom: auto;
+}
+
+#contents:after {
+  content: "====";
+  display: block;
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100px;
+  text-align: center;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.gyazz-ac, .gyazz-ac > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.gyazz-ac {
+  font-family: "helvetica neue", helvetica, arial, geneva, sans-serif;
+  .ac-page {
+    display: none;
+    position: relative;
+    margin: 3% auto 0;
+    padding: 2% 5%;
+    width: 90%;
+    min-height: 90%;
+    text-align: center;
+    font-size: 28px;
+    @media print {
+      display: block;
+      margin: 3% auto 30%;
+      border: 1px solid #333333;
+    }
+    &:last-child {
+      margin: 0 auto 3%;
+    }
+    &.active {
+      display: block;
+    }
+  }
+  .ac-title.active {
+    display: flex !important;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 48px;
+    border: none;
+    text-align: center;
+    p {
+      width: 100%;
+      margin: auto 0;
+      padding: 0.5em;
+      border: 1px solid #aaaaaa;
+      background-color: #e0e0e0;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+  .ac-single.active {
+    display: flex;
+    .ac-line {
+      margin: auto;
+      width: 90%;
+    }
+  }
+  .ac-line {
+    text-align: left;
+  }
+  .ac-listedit0 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 48px;
+  }
+  .ac-listedit1 {
+    margin-top: 10px;
+    font-size: 36px;
+  }
+  .ac-listedit1:before {
+    content: "■";
+    color: #00b000;
+  }
+  .ac-listedit2 {
+    text-indent: 2em;
+  }
+  .ac-listedit2:before {
+    content: "■";
+    color: #00b000;
+  }
+  .ac-listedit3 {
+    text-indent: 3em;
+  }
+  .ac-listedit3:before {
+    content: "■";
+    color: #00b000;
+  }
+  .ac-listedit4 {
+    text-indent: 4em;
+  }
+  .ac-listedit4:before {
+    content: "■";
+    color: #00b000;
+  }
+  .ac-listedit5 {
+    text-indent: 5em;
+  }
+  .ac-listedit5:before {
+    content: "■";
+    color: #00b000;
+  }
+  .ac-listedit6 {
+    text-indent: 6em;
+  }
+  .ac-listedit6:before {
+    content: "■";
+    color: #00b000;
+  }
+  span {
+    position: relative !important;
+    left: auto !important;
+  }
+}
+
+.progress-bar {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 1%;
+  height: 3px;
+  background: red;
+  transition: width 0.1s;
+}
