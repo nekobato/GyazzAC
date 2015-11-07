@@ -1,2 +1,5 @@
-!function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={exports:{},id:r,loaded:!1};return e[r].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="/",t(0)}([function(e,t){var n;window.BASE_URL="https://nekobato.github.io/GyazzAC/",n=document.createElement("script"),n.setAttribute("src",window.BASE_URL+"gyazzac.js"),document.querySelector("head").appendChild(n)}]);
-//# sourceMappingURL=bookmarklet.js.map
+javascript: !(function(){
+  var s = document.createElement('script');
+  s.setAttribute('src', "https://nekobato.github.io/GyazzAC/gyazzac.js?ver=2.01");
+  document.querySelector('head').appendChild(s);
+}).call(this);

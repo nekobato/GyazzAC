@@ -1,9 +1,8 @@
 var WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
-  entry: { 
-    "gyazzac": "./src/gyazzac.coffee",
-    "bookmarklet": "./src/bookmarklet.coffee"
+  entry: {
+    "gyazzac": "./src/gyazzac.coffee"
   },
   output: {
     path: "./",
