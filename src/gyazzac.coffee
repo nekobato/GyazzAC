@@ -8,7 +8,6 @@ class GyazzA
 
   window_size = '980'
 
-
   fetchGyazz = ->
 
     changeFlag = false
@@ -26,12 +25,12 @@ class GyazzA
     refresh() if changeFlag
     return
 
-
   attachAC = ->
 
-    window.BASE_URL || = 'https://nekobato.github.io/GyazzAC/'
     require('./gyazzac.less')
     $('body').prepend '<div id="gyazz_ac" class="gyazz-ac"></div>'
+    decorationsElement = require('./decorations.jade')
+    $('body').prepend decorationsElement
     $('body').append '<div class="progress-bar"></div>'
 
     # resizeの度にzoomを変更する
@@ -42,7 +41,6 @@ class GyazzA
       timer = setTimeout ->
         document.body.style.zoom = $(document).width() / window_size
       , 200
-
 
   refresh = ->
 
@@ -71,11 +69,9 @@ class GyazzA
     $('.ac-page').eq(ac_page).addClass 'active'
     return
 
-
   progress = ->
     pp = (ac_page+1) / (ac_page_total+1) * 100
     $('.progress-bar').css('width', Math.floor(pp) + '%')
-
 
   prev: ->
     if ac_page > 0
@@ -90,8 +86,6 @@ class GyazzA
       .next().addClass 'active'
       ac_page++
       progress()
-
-
 
   c: -> # init
 
@@ -108,7 +102,6 @@ class GyazzA
     refresh()
     $(document).scrollTop(0)
     return @
-
 
 $(document).off 'keydown'
 .on 'keydown', (e, order) ->

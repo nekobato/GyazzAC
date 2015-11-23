@@ -21,6 +21,10 @@ body {
   font-size: 13px !important;
   color: #676482 !important;
   text-shadow: hsla(246, 13%, 100%, 0.5) 0px 1px 0px;
+
+  &  > p {
+    margin: 0;
+  }
 }
 
 .title, #links, .links {
@@ -191,4 +195,40 @@ body {
   height: 3px;
   background: red;
   transition: width 0.1s;
+}
+
+.ac-decorations-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  .decoration-lighting {
+    width: 100%;
+    height: 100%;
+
+    .decoration-lighting-light-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: inline-block;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-width: 300px 100px 300px 100px;
+      border-style: solid;
+      border-color: #000 transparent #000 transparent;
+      border-radius: 300px;
+      border-image: radial-gradient(center center, circle,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0)
+      );
+    }
+  }
 }
