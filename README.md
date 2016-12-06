@@ -3,6 +3,10 @@ GyazzA(C) - Gyazzええかっこしい
 
 Gyazzがかっこつけたスライドになるブックマークレット
 
+## End of Life for GyazzA(C)
+
+Gyazz was born into ![Scrapbox](https://scrapbox.io/) with official presentation mode.
+
 ## つかいかた
 
 ```
